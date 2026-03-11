@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="transport_world">
+
+    <!-- 物理引擎设置 -->
+    <physics type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
+    <!-- 光照 -->
+    <include><uri>model://sun</uri></include>
+
+    <!-- 地面 -->
+    <include><uri>model://ground_plane</uri></include>
+
+    <!-- 起飞点标记 -->
+    <model name="takeoff_pad">
+      <static>true</static>
+      <pose>0 0 0.005 0 0 0</pose>
+      <link name="link">
+        <visual name="vis">
+          <geometry><cylinder><radius>0.5</radius><length>0.01</length></cylinder></geometry>
+          <material><script><name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri></script></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- 目标降落点 -->
+    <model name="delivery_pad">
+      <static>true</static>
+      <pose>5 3 0.005 0 0 0</pose>
+      <link name="link">
+        <visual name="vis">
+          <geometry><cylinder><radius>0.5</radius><length>0.01</length></cylinder></geometry>
+          <material><script><name>Gazebo/Red</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri></script></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- 航点标记柱 -->
+    <model name="waypoint_marker">
+      <static>true</static>
+      <pose>2.5 1.5 1.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis">
+          <geometry><cylinder><radius>0.02</radius><length>2.0</length></cylinder></geometry>
+          <material><script><name>Gazebo/Blue</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri></script></material>
+        </visual>
+      </link>
+    </model>
+
+  </world>
+</sdf>
