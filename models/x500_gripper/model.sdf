@@ -7,6 +7,7 @@
   <model name="x500_gripper">
     <pose>0 0 0.1 0 0 0</pose>
 
+    <!-- 机体 base_link -->
     <link name="base_link">
       <inertial>
         <mass>1.5</mass>
@@ -67,6 +68,7 @@
       </sensor>
     </link>
 
+    <!-- 螺旋桨 0 (前右, CW) -->
     <link name="rotor_0">
       <pose>0.18 -0.18 0.03 0 0 0</pose>
       <inertial>
@@ -106,6 +108,7 @@
       <motorType>velocity</motorType>
     </plugin>
 
+    <!-- 螺旋桨 1 (后左, CW) -->
     <link name="rotor_1">
       <pose>-0.18 0.18 0.03 0 0 0</pose>
       <inertial>
@@ -142,6 +145,7 @@
       <motorType>velocity</motorType>
     </plugin>
 
+    <!-- 螺旋桨 2 (前左, CCW) -->
     <link name="rotor_2">
       <pose>0.18 0.18 0.03 0 0 0</pose>
       <inertial>
@@ -178,6 +182,7 @@
       <motorType>velocity</motorType>
     </plugin>
 
+    <!-- 螺旋桨 3 (后右, CCW) -->
     <link name="rotor_3">
       <pose>-0.18 -0.18 0.03 0 0 0</pose>
       <inertial>
@@ -214,6 +219,7 @@
       <motorType>velocity</motorType>
     </plugin>
 
+    <!-- 夹爪连接杆 -->
     <link name="gripper_base">
       <pose>0 0 -0.055 0 0 0</pose>
       <inertial>
@@ -234,6 +240,7 @@
       <child>gripper_base</child>
     </joint>
 
+    <!-- 左爪 -->
     <link name="gripper_left">
       <pose>0 0.02 -0.10 0 0 0</pose>
       <inertial>
@@ -258,6 +265,7 @@
       <axis><xyz>1 0 0</xyz><limit><lower>-0.5</lower><upper>0.5</upper></limit></axis>
     </joint>
 
+    <!-- 右爪 -->
     <link name="gripper_right">
       <pose>0 -0.02 -0.10 0 0 0</pose>
       <inertial>
@@ -282,6 +290,7 @@
       <axis><xyz>1 0 0</xyz><limit><lower>-0.5</lower><upper>0.5</upper></limit></axis>
     </joint>
 
+    <!-- 负载 (fixed joint = 夹紧状态) -->
     <link name="payload">
       <pose>0 0 -0.155 0 0 0</pose>
       <inertial>
@@ -305,6 +314,7 @@
       <child>payload</child>
     </joint>
 
+    <!-- PX4 SITL 插件 (Gazebo Classic) -->
     <plugin name="mavlink_interface" filename="libgazebo_mavlink_interface.so">
       <robotNamespace></robotNamespace>
       <imuSubTopic>/imu</imuSubTopic>
